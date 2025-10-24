@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import { TaskItem } from './types';
 import './App.css';
@@ -8,8 +8,10 @@ const API_URL = 'http://localhost:5123/api/tasks';
 
 function App() {
   const [tasks, setTasks] = useState<TaskItem[]>([]);
+  const [newTaskDesc, setNewTaskDesc] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     fetchTasks();
@@ -26,6 +28,26 @@ function App() {
       console.error('Error fetching tasks:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleAddTask = async (e: FormEvent) => {
+    e.preventDefault();
+    const trimmedDesc = newTaskDesc.trim();
+    
+    if (!trimmedDesc) return;
+
+    try {
+      setIsSubmitting(true);
+      setError(null);
+      const response = await axios.post(API_URL, { description: trimmedDesc });
+      setTasks([...tasks, response.data]);
+      setNewTaskDesc('');
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to add task');
+      console.error('Error adding task:', err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -50,6 +72,20 @@ function App() {
         </div>
       )}
 
+      <form onSubmit={handleAddTask} className="add-task-form">
+        <input
+          type="text"
+          value={newTaskDesc}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setNewTaskDesc(e.target.value)}
+          placeholder="What needs to be done?"
+          disabled={isSubmitting}
+          maxLength={200}
+        />
+        <button type="submit" disabled={isSubmitting || !newTaskDesc.trim()}>
+          {isSubmitting ? 'Adding...' : '+ Add Task'}
+        </button>
+      </form>
+
       <div className="tasks-container">
         {tasks.length === 0 ? (
           <div className="empty-state">
@@ -65,6 +101,11 @@ function App() {
           </ul>
         )}
       </div>
+
+      <footer className="task-stats">
+        <span>{tasks.filter(t => !t.isCompleted).length} tasks remaining</span>
+        <span>{tasks.length} total</span>
+      </footer>
     </div>
   );
 }
