@@ -51,6 +51,20 @@ function App() {
     }
   };
 
+  const handleToggleComplete = async (task: TaskItem) => {
+    try {
+      setError(null);
+      const updatedStatus = !task.isCompleted;
+      await axios.put(`${API_URL}/${task.id}`, { isCompleted: updatedStatus });
+      setTasks(tasks.map(t =>
+        t.id === task.id ? { ...t, isCompleted: updatedStatus } : t
+      ));
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to update task');
+      console.error('Error updating task:', err);
+    }
+  };
+
   if (loading) {
     return (
       <div className="app-container">
@@ -95,7 +109,14 @@ function App() {
           <ul className="task-list">
             {tasks.map(task => (
               <li key={task.id} className={task.isCompleted ? 'completed' : ''}>
-                <span className="task-description">{task.description}</span>
+                <label className="task-item">
+                  <input
+                    type="checkbox"
+                    checked={task.isCompleted}
+                    onChange={() => handleToggleComplete(task)}
+                  />
+                  <span className="task-description">{task.description}</span>
+                </label>
               </li>
             ))}
           </ul>
