@@ -65,6 +65,19 @@ function App() {
     }
   };
 
+  const handleDeleteTask = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    try {
+      setError(null);
+      await axios.delete(`${API_URL}/${id}`);
+      setTasks(tasks.filter(t => t.id !== id));
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to delete task');
+      console.error('Error deleting task:', err);
+    }
+  };
+
   if (loading) {
     return (
       <div className="app-container">
@@ -117,6 +130,13 @@ function App() {
                   />
                   <span className="task-description">{task.description}</span>
                 </label>
+                <button
+                  className="delete-button"
+                  onClick={(e) => handleDeleteTask(task.id, e)}
+                  aria-label="Delete task"
+                >
+                  ✕
+                </button>
               </li>
             ))}
           </ul>
