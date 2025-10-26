@@ -2,10 +2,10 @@
 
 **Logical Coding Assignment** – Appsian Tech Private Limited
 
-**Student Name:** Divyansh Jain
-**Email:** [divyansh_j@cs.iitr.ac.in](mailto:divyansh_j@cs.iitr.ac.in)
-**Enrollment Number:** 22114032
-**Last Updated:** 26th October 2025
+- **Student Name:** Divyansh Jain
+- **Email:** [divyansh_j@cs.iitr.ac.in](mailto:divyansh_j@cs.iitr.ac.in)
+- **Enrollment Number:** 22114032
+- **Last Updated:** 26th October 2025
 
 ---
 
