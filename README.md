@@ -1,10 +1,22 @@
 # Appsian Logical Coding Assignment
 
-**Student Name:** Divyansh Jain
-**Email:** [divyansh_j@cs.iitr.ac.in](mailto:divyansh_j@cs.iitr.ac.in)
-**Enrollment Number:** 22114032
-**Repository:** [https://github.com/Demigod345/Appsian-Logical-Coding-Assignment](https://github.com/Demigod345/Appsian-Logical-Coding-Assignment)
-**Last Updated:** 26th October 2025
+* **Student Name:** Divyansh Jain
+* **Email (College):** [divyansh_j@cs.iitr.ac.in](mailto:divyansh_j@cs.iitr.ac.in)
+* **Personal Email:** [divyanshjain.2206@gmail.com](mailto:divyanshjain.2206@gmail.com)
+* **Enrollment Number:** 22114032
+* **Repository:** [https://github.com/Demigod345/Appsian-Logical-Coding-Assignment](https://github.com/Demigod345/Appsian-Logical-Coding-Assignment)
+* **Last Updated:** 26th October 2025
+
+---
+
+## Deployed Sites (Bonus)
+
+As part of the bonus section of the assignment, **Assignment 2 – Mini Project Manager** has been deployed online:
+
+* **Backend:** [https://appsian-logical-coding-assignment.onrender.com](https://appsian-logical-coding-assignment.onrender.com)
+* **Frontend:** [https://appsian-logical-coding-assignment.vercel.app](https://appsian-logical-coding-assignment.vercel.app)
+
+> These live deployments allow you to try the application without running it locally.
 
 ---
 
@@ -130,6 +142,8 @@ cd Assignment2/project-manager-ui
 npm install
 npm start
 ```
+
+> Or access the **deployed Assignment 2** directly via the **Deployed Sites (Bonus)** links above.
 
 ---
 
