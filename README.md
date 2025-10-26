@@ -1,4 +1,4 @@
-# Project & Task Manager Projects
+# Mini Project & Task Manager
 
 **Logical Coding Assignment** – Appsian Tech Private Limited
 
