@@ -258,9 +258,9 @@ const ProjectDetails: React.FC = () => {
                     </div>
                     <div className="task-meta">
                       {/* --- NEW DEPENDENCY TAGS SECTION --- */}
-                      {task.dependencyIds && task.dependencyIds.length > 0 && (
+                      {task.dependencies && task.dependencies.length > 0 && (
                         <div className="task-dependency-tags">
-                          {task.dependencyIds.map(depId => (
+                          {task.dependencies.map(depId => (
                             <small key={depId} className="task-tag dep-tag" title={`Depends on: ${taskTitleMap.get(depId)}`}>
                               <IconGitPullRequest /> {taskTitleMap.get(depId) || '...'}
                             </small>
