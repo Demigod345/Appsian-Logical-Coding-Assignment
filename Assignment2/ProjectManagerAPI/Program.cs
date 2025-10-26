@@ -15,7 +15,7 @@ var jwtSecret = builder.Configuration["JwtSettings:Secret"]!;
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
-        policy => policy.WithOrigins("http://localhost:3000", "http://localhost:3001")
+        policy => policy.WithOrigins("http://localhost:3000", "http://localhost:3001", "https://appsian-logical-coding-assignment.vercel.app")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials());
